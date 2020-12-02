@@ -3,7 +3,7 @@
 
   import Draggable from "./components/Draggable.svelte";
   import Card from "./components/Card.svelte";
-  import Textbox from "./components/Textbox.svelte";
+  import TextBox from "./components/TextBox.svelte";
   import Stack from "./components/Stack.svelte";
   import DragArea from "./components/DragArea.svelte";
 
@@ -26,7 +26,7 @@
     },
     {
       id: uuid(),
-      component: Textbox,
+      component: TextBox,
       stackable: true,
       pos: { x: 0, y: 0 },
       props: {
