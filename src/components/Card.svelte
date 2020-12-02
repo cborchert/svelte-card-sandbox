@@ -2,6 +2,12 @@
   export let props = {};
   export let setProps = () => {};
   const flip = () => setProps({ ...props, flipped: !props.flipped });
+  const symbols = {
+    hearts: "♥️",
+    diamonds: "♦️",
+    clubs: "♣️",
+    spades: "♠️",
+  };
 </script>
 
 <style>
@@ -31,7 +37,8 @@
   .Card:before {
     display: block;
     position: absolute;
-    font-size: 22px;
+    font-size: 16px;
+    content: attr(data-display-value);
   }
 
   .Card:before {
@@ -43,22 +50,6 @@
     bottom: 5px;
     right: 5px;
     transform: rotate(180deg);
-  }
-  .hearts:after,
-  .hearts:before {
-    content: "♥️";
-  }
-  .diamonds:after,
-  .diamonds:before {
-    content: "♦️";
-  }
-  .clubs:after,
-  .clubs:before {
-    content: "♣️";
-  }
-  .spades:after,
-  .spades:before {
-    content: "♠️";
   }
 
   .flipped:before,
@@ -92,6 +83,10 @@
   }
 </style>
 
-<div class="Card {props.suit}" class:flipped={props.flipped} on:click={flip}>
+<div
+  class="Card {props.suit}"
+  class:flipped={props.flipped}
+  on:click={flip}
+  data-display-value={`${symbols[props.suit]} ${props.value}`}>
   <span>{props.value}</span>
 </div>
